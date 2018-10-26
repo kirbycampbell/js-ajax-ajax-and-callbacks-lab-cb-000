@@ -17,6 +17,7 @@ describe('index.js', () => {
 
   before(() => {
     window.$ = require('jquery')
+    window.Handlebars = require('handlebars')
   })
 
   describe('index.html', () => {
@@ -25,6 +26,13 @@ describe('index.js', () => {
       expect(document.getElementById('searchTerms')).toExist()
       expect(document.getElementById('results')).toExist()
       expect(document.getElementById('details')).toExist()
+    })
+  })
+
+  describe('handlebars', () => {
+    it('registers a userDetails partial', () => {
+      handlebarsSetup()
+      expect(window.Handlebars.partials.userDetails).toExist()
     })
   })
 
@@ -45,6 +53,7 @@ describe('index.js', () => {
     })
     beforeEach(() => {
       requests = []
+      handlebarsSetup()
     })
     after(() => {
       xhr.restore()
