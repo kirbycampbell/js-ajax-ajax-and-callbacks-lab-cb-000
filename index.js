@@ -30,3 +30,5 @@ var renderSearchResult = (result) => {
       <hr>
     `
 }
+
+var renderSearchResults = (data) => data.items.map( result => renderSearchResult(result))
